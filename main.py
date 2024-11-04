@@ -21,6 +21,8 @@ for link, tytul in artykuly:
     obrazki = re.findall(r'<img[^>]*src=\"(//upload\.wikimedia\.org/[^"]+)\"[^>]*/>', tresc)[:3]
     if obrazki:
         print(' | '.join(obrazki))
+    else:
+        print('')
 
     poczatek_zrodel = tresc_artykulu.find('<h2 id="Przypisy">')
     if poczatek_zrodel != -1:
@@ -32,9 +34,9 @@ for link, tytul in artykuly:
         if zrodla:
             print(' | '.join(zrodla[:3]))
         else:
-            print("Nie ma linkow")
+            print("")
     else:
-        print("Nie dziala - przypisy")
+        print("")
 
     kategorie = re.findall(r'<div id="catlinks"[^>]*>.*?<ul>(.*?)</ul>', tresc_artykulu, re.DOTALL)
     if kategorie:
